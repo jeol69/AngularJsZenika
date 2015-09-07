@@ -8,7 +8,16 @@
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="css/zencontact.css" rel="stylesheet" media="screen">
     </head>
-    <body>
+    <body data-ng-init='contacts=[
+            { "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" },
+            { "id":1, "lastName":"Parker",   "firstName":"Peter",    "address":"New York",                  "phone":"555-SPDRMN" },
+            { "id":2, "lastName":"Storm",    "firstName":"Jane",     "address":"Baxter building, New York", "phone":"555-INVGRL" },
+            { "id":3, "lastName":"Richards", "firstName":"Red",      "address":"Baxter building, New York", "phone":"555-MRFANT" },
+            { "id":4, "lastName":"Storm",    "firstName":"Johnny",   "address":"Baxter building, New York", "phone":"555-TORCH"  },
+            { "id":5, "lastName":"Grimm",    "firstName":"Benjamin", "address":"Baxter building, New York", "phone":"555-THING"  },
+            { "id":6, "lastName":"Murdock",  "firstName":"Matt",     "address":"San Francisco",             "phone":"555-DARDVL" },
+            { "id":7, "lastName":"Stark",    "firstName":"Tony",     "address":"Stark tower, New York",     "phone":"555-IRNMAN" }
+    ]' >
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
@@ -49,15 +58,22 @@
                                 <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
                             </div>
                         </form>
+                    <!--
                         <div ng-show="search">Search for: {{search}}</div>
                         <div ng-show="search">Search for: <span ng-bind="search"/></div>
+                    -->
 
                         <ul class="unstyled">
+                        <!--
                             <li><a href="">ANDRE Nicolas </a></li>
                             <li><a href="">AZOURY Carl </a></li>
                             <li><a href="">CROISIER Olivier</a></li>
                             <li><a href="">DELVAUX Laurent </a></li>
                             <li><a href="">HUBER Olivier </a></li>
+                        -->
+                            <li ng-repeat="contact in contacts">
+                                <a href="">{{contact.lastName}} {{contact.firstName}}</a>
+                            </li>
                         </ul>
 
                     </div>
@@ -65,6 +81,7 @@
 
                 <div class="span8">
                     <div class="row">
+                    <!--
                         <div class="contact-card span4">
                             <div class="contact-card-inner">
                                 <h4>ANDRE Nicolas</h4>
@@ -100,6 +117,15 @@
                                 <div class="contact-phone">01 45 56 67 78</div>
                             </div>
                         </div>
+                    -->
+                        <div class="contact-card span4" ng-repeat="contact in contacts">
+                            <div class="contact-card-inner">
+                                <h4>{{contact.lastName}} {{contact.firstName}}</h4>
+                                <div class="contact-address">{{contact.address}}</div>
+                                <div class="contact-phone">{{contact.phone}}</div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
