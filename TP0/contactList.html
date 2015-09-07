@@ -54,13 +54,13 @@
 
                         <form class="form-search">
                             <div class="input-append">
-                                <input type="text" ng-model="search" class="input-medium search-query">
+                                <input type="text" ng-model="search.lastName" class="input-medium search-query">
                                 <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
                             </div>
                         </form>
                     <!--
-                        <div ng-show="search">Search for: {{search}}</div>
-                        <div ng-show="search">Search for: <span ng-bind="search"/></div>
+                        <div ng-show="search">Search for: {{search.lastName}}</div>
+                        <div ng-show="search">Search for: <span ng-bind="search.lastName"/></div>
                     -->
 
                         <ul class="unstyled">
@@ -71,8 +71,8 @@
                             <li><a href="">DELVAUX Laurent </a></li>
                             <li><a href="">HUBER Olivier </a></li>
                         -->
-                            <li ng-repeat="contact in contacts">
-                                <a href="">{{contact.lastName}} {{contact.firstName}}</a>
+                            <li ng-repeat="contact in contacts | filter:search | orderBy:'lastName'">
+                                <a href="">{{contact.lastName | uppercase}} {{contact.firstName}}</a>
                             </li>
                         </ul>
 
@@ -118,9 +118,9 @@
                             </div>
                         </div>
                     -->
-                        <div class="contact-card span4" ng-repeat="contact in contacts">
+                        <div class="contact-card span4" ng-repeat="contact in contacts | filter:search | orderBy:'lastName'">
                             <div class="contact-card-inner">
-                                <h4>{{contact.lastName}} {{contact.firstName}}</h4>
+                                <h4>{{contact.lastName | uppercase}} {{contact.firstName}}</h4>
                                 <div class="contact-address">{{contact.address}}</div>
                                 <div class="contact-phone">{{contact.phone}}</div>
                             </div>
