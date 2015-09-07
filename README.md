@@ -6,3 +6,5 @@
 2. Installation
  - En ligne de commande, positionnez vous dans le répertoire `Server/nodejs`
  - Lancer le serveur avec la commande `node server`
+3. Accés au projet
+ - Sur un navigateur allez à l'url : [http://localhost:8080](http://localhost:8080)
