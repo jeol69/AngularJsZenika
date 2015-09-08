@@ -8,11 +8,12 @@
  - Lancer le serveur avec la commande `node server`
 3. Accés au projet
  - Sur un navigateur allez à l'url : [http://localhost:8080](http://localhost:8080)
-
 ####TP1: Premier pas
 1. Préparation du TP
 2. Intégration d'AngularJS
 3. Premier binding
 4. Gestion des listes
 5. Intégration de filtres
-
+####TP2: Contrôleurs et scopes
+1. Pré-requis
+2. Création du contrôleur
