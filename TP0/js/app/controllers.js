@@ -10,3 +10,5 @@ var ContactListController = function ($scope) {
         { "id":7, "lastName":"Stark",    "firstName":"Tony",     "address":"Stark tower, New York",     "phone":"555-IRNMAN" }
     ];
 }
+var ContactEditController = function ($scope) {
+}

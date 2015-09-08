@@ -8,18 +8,6 @@
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="css/zencontact.css" rel="stylesheet" media="screen">
     </head>
-<!--
-    <body data-ng-init='contacts=[
-            { "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" },
-            { "id":1, "lastName":"Parker",   "firstName":"Peter",    "address":"New York",                  "phone":"555-SPDRMN" },
-            { "id":2, "lastName":"Storm",    "firstName":"Jane",     "address":"Baxter building, New York", "phone":"555-INVGRL" },
-            { "id":3, "lastName":"Richards", "firstName":"Red",      "address":"Baxter building, New York", "phone":"555-MRFANT" },
-            { "id":4, "lastName":"Storm",    "firstName":"Johnny",   "address":"Baxter building, New York", "phone":"555-TORCH"  },
-            { "id":5, "lastName":"Grimm",    "firstName":"Benjamin", "address":"Baxter building, New York", "phone":"555-THING"  },
-            { "id":6, "lastName":"Murdock",  "firstName":"Matt",     "address":"San Francisco",             "phone":"555-DARDVL" },
-            { "id":7, "lastName":"Stark",    "firstName":"Tony",     "address":"Stark tower, New York",     "phone":"555-IRNMAN" }
-    ]' >
--->
     <body ng-controller="ContactListController">
 
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -48,99 +36,8 @@
                 <h2>Taking care of your people, one at a time.</h2>
             </div>
 
-            <div class="row">
+            <div ng-view></div>
 
-                <div class="span4">
-                    <div class="well">
-
-                        <h2>Contacts</h2>
-
-                        <form class="form-search">
-                            <div class="input-append">
-                                <input type="text" ng-model="search.lastName" class="input-medium search-query">
-                                <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
-                            </div>
-                        </form>
-                    <!--
-                        <div ng-show="search">Search for: {{search.lastName}}</div>
-                        <div ng-show="search">Search for: <span ng-bind="search.lastName"/></div>
-                    -->
-                        <div ng-show="search">
-                            <ng-pluralize count="contactsFilter.length"
-                                when="  {
-                                            '0'     : 'Aucun contact',
-                                            '1'     : 'Un contact',
-                                            'other' : '{} contacts, pour {{search.lastName}}'
-                                        }"
-                        ></ng-pluralize>
-
-
-                        <ul class="unstyled">
-                        <!--
-                            <li><a href="">ANDRE Nicolas </a></li>
-                            <li><a href="">AZOURY Carl </a></li>
-                            <li><a href="">CROISIER Olivier</a></li>
-                            <li><a href="">DELVAUX Laurent </a></li>
-                            <li><a href="">HUBER Olivier </a></li>
-                        -->
-                            <li ng-repeat="contact in contactsFilter =(contacts | filter:search | orderBy:'lastName')">
-                                <a href="">{{contact.lastName | uppercase}} {{contact.firstName}}</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-
-                <div class="span8">
-                    <div class="row">
-                    <!--
-                        <div class="contact-card span4">
-                            <div class="contact-card-inner">
-                                <h4>ANDRE Nicolas</h4>
-                                <div class="contact-address">7 impasse Taga, Londres</div>
-                                <div class="contact-phone">01 90 00 09 00</div>
-                            </div>
-                        </div>
-                        <div class="contact-card span4">
-                            <div class="contact-card-inner">
-                                <h4>AZOURY Carl</h4>
-                                <div class="contact-address">22 impasse Toral, Marseille</div>
-                                <div class="contact-phone">01 81 98 00 85</div>
-                            </div>
-                        </div>
-                        <div class="contact-card span4">
-                            <div class="contact-card-inner">
-                                <h4>CROISIER Olivier</h4>
-                                <div class="contact-address">1 rue Barbe, Bordeaux</div>
-                                <div class="contact-phone">05 55 42 42 42</div>
-                            </div>
-                        </div>
-                        <div class="contact-card span4">
-                            <div class="contact-card-inner">
-                                <h4>DELVAUX Laurent</h4>
-                                <div class="contact-address">404 avenue Cominver, Mikonos</div>
-                                <div class="contact-phone">01 40 50 60 00</div>
-                            </div>
-                        </div>
-                        <div class="contact-card span4">
-                            <div class="contact-card-inner">
-                                <h4>HUBER Olivier</h4>
-                                <div class="contact-address">42 rue Pestre, Paris</div>
-                                <div class="contact-phone">01 45 56 67 78</div>
-                            </div>
-                        </div>
-                    -->
-                        <div class="contact-card span4" ng-repeat="contact in contactsFilter">
-                            <div class="contact-card-inner">
-                                <h4>{{contact.lastName | uppercase}} {{contact.firstName}}</h4>
-                                <div class="contact-address">{{contact.address}}</div>
-                                <div class="contact-phone">{{contact.phone}}</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
         </div>
         <script src="js/angular/angular.js"></script>
         <script src="js/app/controllers.js"></script>
