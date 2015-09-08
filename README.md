@@ -17,3 +17,4 @@
 ####TP2: Contrôleurs et scopes
 1. Pré-requis
 2. Création du contrôleur
+3. Intégration du contrôleur

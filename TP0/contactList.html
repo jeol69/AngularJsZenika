@@ -8,6 +8,7 @@
         <link href="css/bootstrap.css" rel="stylesheet" media="screen">
         <link href="css/zencontact.css" rel="stylesheet" media="screen">
     </head>
+<!--
     <body data-ng-init='contacts=[
             { "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" },
             { "id":1, "lastName":"Parker",   "firstName":"Peter",    "address":"New York",                  "phone":"555-SPDRMN" },
@@ -18,6 +19,8 @@
             { "id":6, "lastName":"Murdock",  "firstName":"Matt",     "address":"San Francisco",             "phone":"555-DARDVL" },
             { "id":7, "lastName":"Stark",    "firstName":"Tony",     "address":"Stark tower, New York",     "phone":"555-IRNMAN" }
     ]' >
+-->
+    <body ng-controller="ContactListController">
 
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
@@ -131,5 +134,6 @@
             </div>
         </div>
         <script src="js/angular/angular.js"></script>
+        <script src="js/app/controllers.js"></script>
     </body>
 </html>
