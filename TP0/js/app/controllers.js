@@ -12,3 +12,9 @@ var ContactListController = function ($scope) {
 }
 var ContactEditController = function ($scope) {
 }
+
+var NavBarController = function ($scope, $location) {
+    $scope.isActive = function(path) {
+        return $location.path().indexOf(path) != -1;
+    }
+}

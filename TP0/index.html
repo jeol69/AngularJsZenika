@@ -10,15 +10,15 @@
     </head>
     <body>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" data-ng-controller="NavBarController">
             <div class="navbar-inner">
                 <div class="container">
                     <a class="brand" href="#">ZenContacts</a>
                     <ul class="nav">
-                        <li class="active">
+                        <li data-ng-class="{active: isActive('/list')}">
                             <a href="#list">My Contacts</a>
                         </li>
-                        <li>
+                        <li data-ng-class="{active: isActive('/edit')}">
                             <a href="#edit">Add new contact</a>
                         </li>
                     </ul>
