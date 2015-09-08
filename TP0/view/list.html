@@ -34,7 +34,11 @@
                 <li><a href="">HUBER Olivier </a></li>
             -->
                 <li ng-repeat="contact in contactsFilter =(contacts | filter:search | orderBy:'lastName')">
-                    <a href="">{{contact.lastName | uppercase}} {{contact.firstName}}</a>
+                    <a href="#/edit/{{contact.id}}">
+                        <span   data-ng-bind="contact.firstName"/>Nicolas</span> <span 
+                                data-ng-bind="contact.lastName |uppercase">ANDRE
+                        </span>
+                    </a>
                 </li>
             </ul>
 
