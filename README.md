@@ -20,3 +20,6 @@
 3. Intégration du contrôleur
 4. Utilisation de Batarang
 5. Utilisation de filtres
+####TP3: Routeur
+1. Modularisation
+2. Routage
