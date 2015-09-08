@@ -65,6 +65,15 @@
                         <div ng-show="search">Search for: {{search.lastName}}</div>
                         <div ng-show="search">Search for: <span ng-bind="search.lastName"/></div>
                     -->
+                        <div ng-show="search">
+                            <ng-pluralize count="contactsFilter.length"
+                                when="  {
+                                            '0'     : 'Aucun contact',
+                                            '1'     : 'Un contact',
+                                            'other' : '{} contacts, pour {{search.lastName}}'
+                                        }"
+                        ></ng-pluralize>
+
 
                         <ul class="unstyled">
                         <!--
@@ -74,7 +83,7 @@
                             <li><a href="">DELVAUX Laurent </a></li>
                             <li><a href="">HUBER Olivier </a></li>
                         -->
-                            <li ng-repeat="contact in contacts | filter:search | orderBy:'lastName'">
+                            <li ng-repeat="contact in contactsFilter =(contacts | filter:search | orderBy:'lastName')">
                                 <a href="">{{contact.lastName | uppercase}} {{contact.firstName}}</a>
                             </li>
                         </ul>
@@ -121,7 +130,7 @@
                             </div>
                         </div>
                     -->
-                        <div class="contact-card span4" ng-repeat="contact in contacts | filter:search | orderBy:'lastName'">
+                        <div class="contact-card span4" ng-repeat="contact in contactsFilter">
                             <div class="contact-card-inner">
                                 <h4>{{contact.lastName | uppercase}} {{contact.firstName}}</h4>
                                 <div class="contact-address">{{contact.address}}</div>

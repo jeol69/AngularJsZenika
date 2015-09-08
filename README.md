@@ -18,3 +18,5 @@
 1. Pré-requis
 2. Création du contrôleur
 3. Intégration du contrôleur
+4. Utilisation de Batarang
+5. Utilisation de filtres
