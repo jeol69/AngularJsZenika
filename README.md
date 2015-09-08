@@ -2,9 +2,17 @@
 ####Serveur HTTP/REST - Node.js
 1. Prerequis
  - Installation de [Node.js](http://nodejs.org/)
- - Configuration de [**NodeJs**](http://recommendations.si.fr.intraorange/environnement-de-d-veloppement-web/#nodejs) ‡ Orange
+ - Configuration de [**NodeJs**](http://recommendations.si.fr.intraorange/environnement-de-d-veloppement-web/#nodejs) √† Orange
 2. Installation
- - En ligne de commande, positionnez vous dans le rÈpertoire `Server/nodejs`
+ - En ligne de commande, positionnez vous dans le r√©pertoire `Server/nodejs`
  - Lancer le serveur avec la commande `node server`
-3. AccÈs au projet
- - Sur un navigateur allez ‡ l'url : [http://localhost:8080](http://localhost:8080)
+3. Acc√©s au projet
+ - Sur un navigateur allez √† l'url : [http://localhost:8080](http://localhost:8080)
+
+####TP1: Premier pas
+1. Pr√©paration du TP
+2. Int√©gration d'AngularJS
+3. Premier binding
+4. Gestion des listes
+5. Int√©gration de filtres
+
