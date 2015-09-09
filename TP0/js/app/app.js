@@ -1,6 +1,6 @@
 'use strict';
 
-var zenContactApp = angular.module('zenContactApp',['ngRoute']);
+var zenContactApp = angular.module('zenContactApp',['ngRoute','zenContactServices']);
 
 zenContactApp.config(function ($routeProvider) {
     $routeProvider.when('/list',            {templateUrl: 'view/list.html',     controller: ContactListController});
