@@ -1,4 +1,4 @@
-var ContactListController = function ($scope, contactService) {
+zenContactApp.controller('ContactListController', ['$scope', 'contactService', function ($scope, contactService) {
     /*
     $scope.contacts = [ 
         { "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" },
@@ -12,14 +12,15 @@ var ContactListController = function ($scope, contactService) {
     ];
     */
     $scope.contacts = contactService.getAllContacts();
-}
-var ContactEditController = function ($scope, $routeParams, contactService) {
+}]);
+
+zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', 'contactService', function ($scope, $routeParams, contactService) {
     console.log("Controleur: ContactEditController ==> $routeParams.id: " + $routeParams.id + " (recuperation de id du contact)");
     $scope.contact = contactService.getContactById(parseInt($routeParams.id));
     console.log("$scope.contact.lastName: " + $scope.contact.lastName);
-}
+}]);
 
-var NavBarController = function ($scope, $location) {
+zenContactApp.controller('NavBarController', ['$scope', '$location', function ($scope, $location) {
     $scope.isActive = function(path) {
         // "la fonction indexOf('x') retourne la premiere position de x trouvé dans cette chaine de texte, soit ici 16".indexOf("x");
         /*
@@ -46,4 +47,4 @@ var NavBarController = function ($scope, $location) {
         */
         return $location.path().indexOf(path) != -1;
     }
-}
+}]);
