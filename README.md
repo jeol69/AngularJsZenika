@@ -26,3 +26,5 @@
 3. Navigation
 ####TP4: Services et IOC
 1. Développement du service
+2. Développement de la page d'affichage dun contact
+3. Bonus: déclaration des contrôleurs
