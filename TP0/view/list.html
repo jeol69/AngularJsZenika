@@ -16,14 +16,15 @@
             <div ng-show="search">Search for: <span ng-bind="search.lastName"/></div>
         -->
             <div ng-show="search">
-                <ng-pluralize count="contactsFilter.length"
+                <ng-pluralize
+                    count="contactsFilter.length"
                     when="  {
                                 '0'     : 'Aucun contact',
                                 '1'     : 'Un contact',
                                 'other' : '{} contacts, pour {{search.lastName}}'
-                            }"
-            ></ng-pluralize>
-
+                            }">
+                </ng-pluralize>
+            </div>
 
             <ul class="unstyled">
             <!--

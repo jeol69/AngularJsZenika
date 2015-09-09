@@ -13,8 +13,10 @@ var ContactListController = function ($scope, contactService) {
     */
     $scope.contacts = contactService.getAllContacts();
 }
-var ContactEditController = function ($scope, $routeParams) {
-    console.log("Controleur: ContactEditController ==> $routeParams.id: " + $routeParams.id + "(recuperation de id du contact)");
+var ContactEditController = function ($scope, $routeParams, contactService) {
+    console.log("Controleur: ContactEditController ==> $routeParams.id: " + $routeParams.id + " (recuperation de id du contact)");
+    $scope.contact = contactService.getContactById(parseInt($routeParams.id));
+    console.log("$scope.contact.lastName: " + $scope.contact.lastName);
 }
 
 var NavBarController = function ($scope, $location) {
