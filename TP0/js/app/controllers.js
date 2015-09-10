@@ -15,9 +15,14 @@ zenContactApp.controller('ContactListController', ['$scope', 'contactService', f
 }]);
 
 zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', 'contactService', function ($scope, $routeParams, contactService) {
-    console.log("Controleur: ContactEditController ==> $routeParams.id: " + $routeParams.id + " (recuperation de id du contact)");
-    $scope.contact = contactService.getContactById(parseInt($routeParams.id));
-    console.log("$scope.contact.lastName: " + $scope.contact.lastName);
+    if ($routeParams.id) {
+        $scope.contact = contactService.getContactById(parseInt($routeParams.id));
+        var info =  "$routeParams.id: " + $routeParams.id;
+            info += " ==> $scope.contact:  { id: '" + $scope.contact.id + "', lastName: '" + $scope.contact.lastName + "' }";
+        console.log(info);
+    } else {
+        $scope.contact = {};
+    }
 }]);
 
 zenContactApp.controller('NavBarController', ['$scope', '$location', function ($scope, $location) {

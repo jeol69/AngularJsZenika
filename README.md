@@ -28,3 +28,5 @@
 1. Développement du service
 2. Développement de la page d'affichage dun contact
 3. Bonus: déclaration des contrôleurs
+####TP5: Gestion des formulaires
+1. Gestion du formulaire d'ajout de contact
