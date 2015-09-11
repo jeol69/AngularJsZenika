@@ -5,17 +5,19 @@
 
             <h2>Edit contact</h2>
 
-            <form action="" method="post" class="form-horizontal">
-                <div class="control-group">
+            <form name="contactForm" action="" method="post" class="form-horizontal">
+                <div class="control-group" ng-class="{error: contactForm.firstName.$invalid && contactForm.firstName.$dirty}">
                     <label for="firstName" class="control-label">First name</label>
                     <div class="controls">
-                        <input type="text" name="firstName" id="firstName" class="input-xlarge" ng-model="contact.firstName" required/><br/>
+                        <input type="text" name="firstName" id="firstName" class="input-xlarge" ng-model="contact.firstName" required/>
+                        <span class="help-inline" ng-show="contactForm.firstName.$invalid && contactForm.firstName.$dirty"> Obligatoire </span><br/>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" ng-class="{error: contactForm.lastName.$invalid && contactForm.lastName.$dirty}">
                     <label for="lastName" class="control-label">Last name</label>
                     <div class="controls">
-                        <input type="text" name="lastName" id="lastName" class="input-xlarge" ng-model="contact.lastName" required/><br/>
+                        <input type="text" name="lastName" id="lastName" class="input-xlarge" ng-model="contact.lastName" required/>
+                        <span class="help-inline" ng-show="contactForm.lastName.$invalid && contactForm.lastName.$dirty"> Obligatoire </span><br/>
                     </div>
                 </div>
                 <div class="control-group">
@@ -24,16 +26,18 @@
                         <textarea rows="3" name="address" id="address" class="input-xlarge" ng-model="contact.address"></textarea>
                     </div>
                 </div>
-                <div class="control-group">
+                <div class="control-group" ng-class="{error: contactForm.phone.$invalid && contactForm.phone.$dirty}">
                     <label for="phone" class="control-label">Phone</label>
                     <div class="controls">
-                        <input type="text" name="phone" id="phone" class="input-xlarge" ng-model="contact.phone" required ng-pattern="/^555-[A-Z]{5,6}$/"/><br/>
+                        <input type="text" name="phone" id="phone" class="input-xlarge" ng-model="contact.phone" required ng-pattern="/^555-[A-Z]{5,6}$/"/>
+                        <span class="help-inline" ng-show="contactForm.phone.$invalid && contactForm.phone.$dirty"> format: 555-xxxxx (5, 6 majuscules)</span><br/>
                     </div>
                 </div>
                 <div class="control-group">
                     <div class="controls">
                         <input type="submit" value="Save" class="btn btn-primary"
-                               data-ng-click="saveContact(contact)"/>
+                               data-ng-click="saveContact(contact)"
+                               data-ng-disabled="contactForm.$invalid"/>
                         <a class="btn btn-link" ng-href="#/list">Cancel</a>
                     </div>
                 </div>
