@@ -10,8 +10,11 @@ zenContactApp.controller('ContactListController', ['$scope', 'contactService', f
         { "id":6, "lastName":"Murdock",  "firstName":"Matt",     "address":"San Francisco",             "phone":"555-DARDVL" },
         { "id":7, "lastName":"Stark",    "firstName":"Tony",     "address":"Stark tower, New York",     "phone":"555-IRNMAN" }
     ];
-    */
     $scope.contacts = contactService.getAllContacts();
+    */
+    contactService.getAllContacts(function(data) {
+        $scope.contacts = data;
+    });
 }]);
 
 zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', '$location', 'contactService', function ($scope, $routeParams, $location, contactService) {

@@ -2,9 +2,10 @@
 
 var zenContactServices = angular.module('zenContactServices',[]); // Module correspondant à la couche service (découplage de l'application pour futur tests)
 
-zenContactServices.factory('contactService', function() { // déclaration du service contactService responsable de la gestion des contacts
+zenContactServices.factory('contactService', function($http) { // déclaration du service contactService responsable de la gestion des contacts
         var instance = {};
 
+        /*
         var contacts = [
             { "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" },
             { "id":1, "lastName":"Parker",   "firstName":"Peter",    "address":"New York",                  "phone":"555-SPDRMN" },
@@ -24,7 +25,14 @@ zenContactServices.factory('contactService', function() { // déclaration du serv
             console.log("liste des lastName des contacts: "+list_lastName);
             return contacts;
         };
-
+        */
+        instance.getAllContacts = function(onSuccess) {
+            $http.get('/rest/contacts')
+                .success(function(data) {
+                    onSuccess(data);
+                });
+        }
+        /*
         instance.getContactById = function(idParam) {
                 for (var i=0 ; i< contacts.length ; i++) {
                     if (contacts[i].id === idParam) {
@@ -33,23 +41,20 @@ zenContactServices.factory('contactService', function() { // déclaration du serv
                 }
                 // return _.findWhere(contacts, {id: idParam})   //undeurscore.js
         }
-
-        instance.saveContact = function(contact) {
-                    // TODO;
-        }
-
+        */
+        /*
         instance.saveContact = function (contact) {
-        if (contact.id) {
-            for (var i = 0; i < contacts.length; i++) {
-                if (contacts[i].id == contact.id) {
-                    contacts.splice(i, 1, contact);
+            if (contact.id) {
+                for (var i = 0; i < contacts.length; i++) {
+                    if (contacts[i].id == contact.id) {
+                        contacts.splice(i, 1, contact);
+                    }
                 }
+            } else {
+                contact.id = contacts.length;
+                contacts.push(contact);
             }
-        } else {
-            contact.id = contacts.length;
-            contacts.push(contact);
-        }
-    };
-
+        };
+        */
         return instance;
 });
