@@ -14,7 +14,7 @@ zenContactApp.controller('ContactListController', ['$scope', 'contactService', f
     $scope.contacts = contactService.getAllContacts();
 }]);
 
-zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', 'contactService', function ($scope, $routeParams, contactService) {
+zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', '$location', 'contactService', function ($scope, $routeParams, $location, contactService) {
     if ($routeParams.id) {
         $scope.contact = contactService.getContactById(parseInt($routeParams.id));
         var info =  "$routeParams.id: " + $routeParams.id;
@@ -22,6 +22,10 @@ zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', 'co
         console.log(info);
     } else {
         $scope.contact = {};
+    }
+    $scope.saveContact = function(contact) {
+        contactService.saveContact(contact);
+        $location.path("/list"); //redirige l'utilisateur vers la liste de contact
     }
 }]);
 

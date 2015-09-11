@@ -38,5 +38,18 @@ zenContactServices.factory('contactService', function() { // déclaration du serv
                     // TODO;
         }
 
+        instance.saveContact = function (contact) {
+        if (contact.id) {
+            for (var i = 0; i < contacts.length; i++) {
+                if (contacts[i].id == contact.id) {
+                    contacts.splice(i, 1, contact);
+                }
+            }
+        } else {
+            contact.id = contacts.length;
+            contacts.push(contact);
+        }
+    };
+
         return instance;
 });
