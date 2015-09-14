@@ -29,6 +29,7 @@ zenContactServices.factory('contactService', function($http) { // déclaration du
         instance.getAllContacts = function(onSuccess) {
             $http.get('/rest/contacts')
                 .success(function(data) {
+                    //data = [{ "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" }] ;
                     onSuccess(data);
                 });
         }
@@ -42,6 +43,12 @@ zenContactServices.factory('contactService', function($http) { // déclaration du
                 // return _.findWhere(contacts, {id: idParam})   //undeurscore.js
         }
         */
+        instance.getContactById = function(idParam, onSuccess) {
+            $http.get('/rest/contacts/' + idParam)
+                .success(function(data) {
+                    onSuccess(data);
+                });
+        }
         /*
         instance.saveContact = function (contact) {
             if (contact.id) {
@@ -56,5 +63,20 @@ zenContactServices.factory('contactService', function($http) { // déclaration du
             }
         };
         */
+        instance.saveContact = function(contact, onSuccess) {
+            if(contact.id) {
+                //Modification d'un nouveau contact
+                $http.post('/rest/contacts/' + contact.id, contact)
+                    .success(function(data) {
+                        onSuccess();
+                    });
+            } else {
+                //Création d'un nouveau contact
+                $http.post('/rest/contacts/',contact)
+                    .success(function(data) {
+                        onSuccess();
+                });
+            }
+        }
         return instance;
 });

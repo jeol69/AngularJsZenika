@@ -18,6 +18,8 @@ zenContactApp.controller('ContactListController', ['$scope', 'contactService', f
 }]);
 
 zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', '$location', 'contactService', function ($scope, $routeParams, $location, contactService) {
+    $scope.contact = {};
+    /*
     if ($routeParams.id) {
         $scope.contact = contactService.getContactById(parseInt($routeParams.id));
         var info =  "$routeParams.id: " + $routeParams.id;
@@ -26,10 +28,24 @@ zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', '$l
     } else {
         $scope.contact = {};
     }
+    */
+    if ($routeParams.id) {
+        //console.log("$routeParams.id: ",$routeParams.id);
+        $scope.contact = contactService.getContactById($routeParams.id, function(data) {
+            $scope.contact = data;
+        });
+    }
+    /*
     $scope.saveContact = function(contact) {
         contactService.saveContact(contact);
         $location.path("/list"); //redirige l'utilisateur vers la liste de contact
     }
+    */
+    $scope.saveContact = function() {
+        contactService.saveContact($scope.contact, function() {
+            $location.path('/list');
+        });
+    };
 }]);
 
 zenContactApp.controller('NavBarController', ['$scope', '$location', function ($scope, $location) {
