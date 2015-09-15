@@ -1,10 +1,25 @@
 'use strict';
 
-var zenContactServices = angular.module('zenContactServices', []); // Module correspondant à la couche service (découplage de l'application pour futur tests)
+//var zenContactServices = angular.module('zenContactServices', []); // Module correspondant à la couche service (découplage de l'application pour futur tests)
+var zenContactServices = angular.module('zenContactServices', ['ngResource']); // Module correspondant à la couche service (découplage de l'application pour futur tests)
 
+zenContactServices.factory('sFcontact', function($resource) { // sFcontact : service factory contact
+    return $resource(
+        '/rest/contacts/:id',
+        { id: '@id' },
+        { update: {
+            method: 'PUT',
+            params: { id: '@id' }
+          }
+        }
+    );
+});
+
+/*
 //zenContactServices.factory('contactService', function($http) { // déclaration du service contactService responsable de la gestion des contacts
 zenContactServices.service('contactService', function($http) { // déclaration du service contactService responsable de la gestion des contacts
         //var instance = {};
+
         //instance.getAllContacts = function(callback) {
         this.getAllContacts = function(callback) {
             $http
@@ -71,3 +86,4 @@ zenContactServices.service('contactService', function($http) { // déclaration du
         }
         //return instance;
 });
+*/

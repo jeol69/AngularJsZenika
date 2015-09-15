@@ -30,3 +30,7 @@
 3. Bonus: déclaration des contrôleurs
 ####TP5: Gestion des formulaires
 1. Gestion du formulaire d'ajout de contact
+2. Validation des champs du formulaire
+####TP6: Communication avec un serveur
+1. Effectuer des appels AJAX avec $http
+2. Consommer une ressource REST avec $resource
