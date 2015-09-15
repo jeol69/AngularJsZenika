@@ -1,82 +1,73 @@
 'use strict';
 
-var zenContactServices = angular.module('zenContactServices',[]); // Module correspondant à la couche service (découplage de l'application pour futur tests)
+var zenContactServices = angular.module('zenContactServices', []); // Module correspondant à la couche service (découplage de l'application pour futur tests)
 
-zenContactServices.factory('contactService', function($http) { // déclaration du service contactService responsable de la gestion des contacts
-        var instance = {};
-
-        /*
-        var contacts = [
-            { "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" },
-            { "id":1, "lastName":"Parker",   "firstName":"Peter",    "address":"New York",                  "phone":"555-SPDRMN" },
-            { "id":2, "lastName":"Storm",    "firstName":"Jane",     "address":"Baxter building, New York", "phone":"555-INVGRL" },
-            { "id":3, "lastName":"Richards", "firstName":"Red",      "address":"Baxter building, New York", "phone":"555-MRFANT" },
-            { "id":4, "lastName":"Storm",    "firstName":"Johnny",   "address":"Baxter building, New York", "phone":"555-TORCH"  },
-            { "id":5, "lastName":"Grimm",    "firstName":"Benjamin", "address":"Baxter building, New York", "phone":"555-THING"  },
-            { "id":6, "lastName":"Murdock",  "firstName":"Matt",     "address":"San Francisco",             "phone":"555-DARDVL" },
-            { "id":7, "lastName":"Stark",    "firstName":"Tony",     "address":"Stark tower, New York",     "phone":"555-IRNMAN" }
-        ];
-
-        instance.getAllContacts = function() {
-            var list_lastName =""
-            for (var key in contacts) {
-                list_lastName += (list_lastName!=""?", ":"") + contacts[key].lastName; // log dans la console
-            }
-            console.log("liste des lastName des contacts: "+list_lastName);
-            return contacts;
-        };
-        */
-        instance.getAllContacts = function(onSuccess) {
-            $http.get('/rest/contacts')
-                .success(function(data) {
-                    //data = [{ "id":0, "lastName":"Wayne",    "firstName":"Bruce",    "address":"Gotham city",               "phone":"555-BATMAN" }] ;
-                    onSuccess(data);
-                });
-        }
-        /*
-        instance.getContactById = function(idParam) {
-                for (var i=0 ; i< contacts.length ; i++) {
-                    if (contacts[i].id === idParam) {
-                        return contacts[i];
+//zenContactServices.factory('contactService', function($http) { // déclaration du service contactService responsable de la gestion des contacts
+zenContactServices.service('contactService', function($http) { // déclaration du service contactService responsable de la gestion des contacts
+        //var instance = {};
+        //instance.getAllContacts = function(callback) {
+        this.getAllContacts = function(callback) {
+            $http
+                .get('/rest/contacts')
+                .success(
+                    function(data) {
+                        callback(data);
                     }
-                }
-                // return _.findWhere(contacts, {id: idParam})   //undeurscore.js
-        }
-        */
-        instance.getContactById = function(idParam, onSuccess) {
-            $http.get('/rest/contacts/' + idParam)
-                .success(function(data) {
-                    onSuccess(data);
-                });
-        }
-        /*
-        instance.saveContact = function (contact) {
-            if (contact.id) {
-                for (var i = 0; i < contacts.length; i++) {
-                    if (contacts[i].id == contact.id) {
-                        contacts.splice(i, 1, contact);
+                )
+                .error(
+                    function () {
+                        callback({});
                     }
-                }
-            } else {
-                contact.id = contacts.length;
-                contacts.push(contact);
-            }
-        };
-        */
-        instance.saveContact = function(contact, onSuccess) {
+                );
+        }
+
+        //instance.getContactById = function(idParam, callback) {
+        this.getContactById = function(idParam, callback) {
+            $http
+                .get('/rest/contacts/' + idParam)
+                .success(
+                    function(data) {
+                        callback(data);
+                    }
+                )
+                .error(
+                    function () {
+                        callback({});
+                    }
+                );
+        }
+
+        //instance.saveContact = function(contact, callback) {
+        this.saveContact = function(contact, callback) {
             if(contact.id) {
                 //Modification d'un nouveau contact
-                $http.post('/rest/contacts/' + contact.id, contact)
-                    .success(function(data) {
-                        onSuccess();
-                    });
+                $http
+                    .put('/rest/contacts/' + contact.id, contact)
+                    .success(
+                        function() {
+                            callback();
+                        }
+                    )
+                    .error(
+                        function () {
+                            callback("Error");
+                        }
+                    );
             } else {
                 //Création d'un nouveau contact
-                $http.post('/rest/contacts/',contact)
-                    .success(function(data) {
-                        onSuccess();
-                });
+                $http
+                    .post('/rest/contacts/', contact)
+                    .success(
+                        function() {
+                            callback(null);
+                        }
+                    )
+                    .error(
+                        function () {
+                            callback("Error");
+                        }
+                    );
             }
         }
-        return instance;
+        //return instance;
 });
