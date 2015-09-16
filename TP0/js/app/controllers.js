@@ -20,6 +20,16 @@ zenContactApp.controller('ContactListController', ['$scope', 'sFcontact', functi
     });
     */
     $scope.contacts = sFcontact.query();
+
+    $scope.nameFilter = function(contact) {
+        var search = $scope.search || '';
+        var lastName = contact.lastName ;
+        var firstName = contact.firstName ;
+        var filtre = lastName.match(new RegExp(search, "i")) || firstName.match(new RegExp(search, "i"));
+        console.log("contact: ",contact," - search: ",search," - lastName: ",lastName," - firstName: ",firstName," - filtre: ",filtre);
+        return filtre;
+    }
+
 }]);
 
 //zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', '$location', 'contactService', function ($scope, $routeParams, $location, contactService) {
