@@ -34,3 +34,5 @@
 ####TP6: Communication avec un serveur
 1. Effectuer des appels AJAX avec $http
 2. Consommer une ressource REST avec $resource
+####TP7: Filtres
+1. Filtre sur le prénom et le nom du contact

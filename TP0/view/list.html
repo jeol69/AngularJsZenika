@@ -7,7 +7,8 @@
 
             <form class="form-search">
                 <div class="input-append">
-                    <input type="text" ng-model="search.lastName" class="input-medium search-query">
+                    <!-- <input type="text" ng-model="search.lastName" class="input-medium search-query"> -->
+                    <input type="text" ng-model="search" class="input-medium search-query">
                     <button type="submit" class="btn"><i class="icon-search"></i> Search</button>
                 </div>
             </form>
@@ -21,7 +22,8 @@
                     when="  {
                                 '0'     : 'Aucun contact',
                                 '1'     : 'Un contact',
-                                'other' : '{} contacts, pour {{search.lastName}}'
+                                '##other' : '{} contacts, pour {{search.lastName}}',
+                                'other' : '{} contacts, pour {{search}}'
                             }">
                 </ng-pluralize>
             </div>
@@ -34,7 +36,7 @@
                 <li><a href="">DELVAUX Laurent </a></li>
                 <li><a href="">HUBER Olivier </a></li>
             -->
-                <li ng-repeat="contact in contactsFilter =(contacts | filter:search | orderBy:'lastName')">
+                <li ng-repeat="contact in contactsFilter =(contacts | filter:nameFilter | orderBy:'lastName')">
                     <a href="#/edit/{{contact.id}}">
                         <span   data-ng-bind="contact.firstName"/>Nicolas</span> <span 
                                 data-ng-bind="contact.lastName |uppercase">ANDRE

@@ -20,6 +20,23 @@ zenContactApp.controller('ContactListController', ['$scope', 'sFcontact', functi
     });
     */
     $scope.contacts = sFcontact.query();
+
+    $scope.nameFilter = function(contact) {
+        var search = $scope.search || '';
+        var lastName = contact.lastName ;
+        var firstName = contact.firstName ;
+        var filtre = lastName.match(new RegExp(search, "i")) || firstName.match(new RegExp(search, "i"));
+        //console.log("contact: ",contact," - search: ",search," - typeof_search: ",typeof(search)," - lastName: ",lastName," - firstName: ",firstName," - filtre: ",filtre," - typeof_filtre: ",typeof(filtre));
+        /* javascript infos sur match et RegExp
+        var lstVal = "jkjaiaazAikjkAIkllk";//["abc", "baa", "cd"];
+        var fltVal = "ai";
+        var resVal = lstVal.match(new RegExp(fltVal, "i")); // "i" indépendant de la caste, voir aussi RegExp(fltVal, "gi") "g" toutes les occurances
+        // remarque: RegExp(/ai/i) est équivalent à RegExp("ai", "i")
+        console.log("lstVal: ",lstVal," - fltVal: ",fltVal," - resVal: ",resVal," - typeof_resVal",typeof(resVal)," - resVal.index: ",resVal['index']);
+        */
+        return filtre;
+    }
+
 }]);
 
 //zenContactApp.controller('ContactEditController', ['$scope', '$routeParams', '$location', 'contactService', function ($scope, $routeParams, $location, contactService) {
